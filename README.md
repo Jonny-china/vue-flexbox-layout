@@ -26,7 +26,7 @@ Vue.use(VueFlexboxLayout)
 </flex>
 ```
 
-## Props
+## Api
 
 ### flex
 
