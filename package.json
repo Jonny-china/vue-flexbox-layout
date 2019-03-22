@@ -1,0 +1,38 @@
+{
+  "name": "vue-flexbox-layout",
+  "version": "1.0.2",
+  "description": "CSS flex layout",
+  "keywords": [
+    "flex",
+    "vue",
+    "layout"
+  ],
+  "main": "./lib/index.js",
+  "author": "Jonny-Chen <c1043870470@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jonny-china/vue-flexbox-layout"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "node-sass": "^4.11.0",
+    "progress-bar-webpack-plugin": "^1.12.1",
+    "sass": "^1.17.3",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
