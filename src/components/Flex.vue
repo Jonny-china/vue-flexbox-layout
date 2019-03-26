@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import classnames from 'classnames'
 const prefixCls = 'c-flexbox'
 
 export default {
@@ -35,7 +34,9 @@ export default {
   computed: {
     classNames() {
       const { direction, wrap, justify, align, alignContent } = this
-      return classnames(prefixCls, {
+      return {
+        [prefixCls]: true,
+
         [`${prefixCls}-dir-row`]: direction === 'row',
         [`${prefixCls}-dir-row-reverse`]: direction === 'row-reverse',
         [`${prefixCls}-dir-column`]: direction === 'column',
@@ -63,7 +64,7 @@ export default {
         [`${prefixCls}-align-content-between`]: alignContent === 'between',
         [`${prefixCls}-align-content-around`]: alignContent === 'around',
         [`${prefixCls}-align-content-stretch`]: alignContent === 'stretch'
-      })
+      }
     }
   }
 }

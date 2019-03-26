@@ -1,13 +1,13 @@
 # vue-flexbox-layout
 
-> Vue plugin based on flexbox layout
+> flex 布局的 vue 插件
 
 ## Installation
 
 ```bash
-npm install vue-flexbo-layout
-or
-yarn add vue-flexbo-layout
+npm install vue-flexbox-layout
+//or
+yarn add vue-flexbox-layout
 ```
 
 ## Usage
@@ -15,6 +15,7 @@ yarn add vue-flexbo-layout
 ```js
 import Vue from 'vue'
 import VueFlexboxLayout from 'vue-flexbox-layout'
+import 'vue-flexbox-layout/lib/vue-flexbox-layout.css' //2.0+将css分离为单个文件
 
 Vue.use(VueFlexboxLayout)
 ```
