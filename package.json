@@ -1,6 +1,6 @@
 {
   "name": "vue-flexbox-layout",
-  "version": "2.0.0",
+  "version": "3.0.2",
   "description": "CSS flex layout",
   "keywords": [
     "flex",
@@ -8,6 +8,7 @@
     "vue",
     "layout"
   ],
+  "types": "./types/index.d.ts",
   "main": "./lib/index.js",
   "author": "Jonny-Chen <c1043870470@gmail.com>",
   "license": "MIT",
@@ -20,20 +21,22 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/preset-env": "^7.4.1",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^2.1.1",
-    "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "progress-bar-webpack-plugin": "^1.12.1",
-    "sass": "^1.17.3",
-    "sass-loader": "^7.1.0",
-    "uglifyjs-webpack-plugin": "^2.1.2",
-    "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sass": "^1.26.0",
+    "sass-loader": "^8.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-fix-style-only-entries": "^0.4.0"
   }
 }

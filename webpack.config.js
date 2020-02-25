@@ -3,18 +3,25 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
+
+// 输出目录
+const outoutPath = path.resolve(process.cwd(), './lib')
 module.exports = {
   mode: 'production',
   entry: {
-    'vue-flexbox-layout': ['./src/index.js']
+    'index': ['./src/index.js'],
+    'vue-flexbox-layout': './src/style/vue-flexbox-layout.scss'
   },
   output: {
-    path: path.resolve(process.cwd(), './lib'),
+    path: outoutPath,
     publicPath: '',
-    filename: 'index.js',
+    filename: '[name].js',
     library: 'vue-flexbox-layout',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -59,7 +66,7 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader'
@@ -67,7 +74,8 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              indentedSyntax: false
+              implementation: require('sass'),
+              sassOptions: { indentedSyntax: false }
             }
           }
         ]
@@ -75,10 +83,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
+    new CopyWebpackPlugin([{from: path.resolve(__dirname, 'src/style/vue-flexbox-layout.scss'), to: outoutPath}]),
+    new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
   ]
 }
