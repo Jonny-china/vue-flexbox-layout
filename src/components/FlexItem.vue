@@ -5,20 +5,6 @@
 </template>
 
 <script>
-function parseFlex(flex) {
-  if (typeof flex === "number" || flex === '1') {
-    return {
-      flex: `${flex} ${flex} auto`,
-      width: 0
-    };
-  }
-
-  if (/^\d+(\.\d+)?(px|em|rem|vw|%)$/.test(flex)) {
-    return {flex: `0 0 ${flex}`};
-  }
-
-  return {flex};
-}
 export default {
   name: "FlexItem",
   props: {
@@ -27,7 +13,7 @@ export default {
   computed: {
     gutter() {
       let parent = this.$parent;
-      if(parent && parent.$options.name !== "Flex") return {}
+      if (parent && parent.$options.name !== "Flex") return {};
 
       if (!(parent && parent.gutter)) {
         return {};
@@ -45,15 +31,41 @@ export default {
         const gutter = parseInt(num || "0", 10);
         return gutter > 0
           ? {
-              paddingLeft: `${gutter / 2}${unit || 'px'}`,
-              paddingRight: `${gutter / 2}${unit || 'px'}`
+              paddingLeft: `${gutter / 2}${unit || "px"}`,
+              paddingRight: `${gutter / 2}${unit || "px"}`
             }
           : {};
       }
       return {};
     },
     styleFlex() {
-      return this.flex ? parseFlex(this.flex) : {};
+      const flex = this.flex;
+
+      if (!flex) return {};
+
+      if (typeof flex === "number" || flex === "1") {
+        const parent = this.$parent;
+        if (
+          parent &&
+          parent.$options.name === "Flex" &&
+          (parent.direction === "column" ||
+            parent.direction === "column-reverse")
+        ) {
+          return {
+            flex: `${flex} ${flex} auto`
+          };
+        }
+        return {
+          flex: `${flex} ${flex} auto`,
+          width: 0
+        };
+      }
+
+      if (/^\d+(\.\d+)?(px|em|rem|vw|%)$/.test(flex)) {
+        return { flex: `0 0 ${flex}` };
+      }
+
+      return { flex };
     }
   }
 };
