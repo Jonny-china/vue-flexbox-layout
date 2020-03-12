@@ -16,4 +16,6 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
+export {Flex, FlexItem}
+
 export default { install, Flex, FlexItem }
